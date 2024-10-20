@@ -1,52 +1,41 @@
-import java.util.Scanner;
-
 class StudentRecord
 {
-	String name;
-	int age;
-	StudentRecord()
-	{
-		name="unknown";
-		age="0";
-		address="npt available";
-	}
-void setInfo(String n,int a)
+String name;
+int age;
+String address;
+StudentRecord()
 {
-	name=n;
-	age=a;
+name="Unknown";
+age=0;
+address="Not Available";
 }
-
-void setInfo(String n,int a,String addr)
+public void setInfo(String n,int a)
 {
-	name=n;
-	age=a;
-	address=addr;
+name=n;
+age=a;
 }
-
-void printData()
+public void setInfo(String n,int a, String add)
 {
-	System.out.println(name+"\t"+age"\t"+address);
+name=n;
+age=a;
+address=add;
 }
-
-
-}
-class Student
+public void printData()
 {
-	public void main (String[] args)
-	{
-		StudentRecord s[]=new StudentRecord[3];
-		s[0]=new studentRecord();
-		s[0].setInfo("ram",16);
-		s[0].printData();
-		s[1]=new studentRecord();
-		s[1].setInfo("atharv",15,"dubai");
-		s[1].printData();
-		s[2]=new studentRecord();
-		s[2].setInfo("shyam",14);
-		s[2].printData();
-		s[3]=new studentRecord();
-		s[3].setInfo("vinit",13);
-		s[3].printData();
-
-
-
+System.out.println(name+"\t"+age+"\t"+address);
+}
+public static void main(String args[])
+{
+StudentRecord s[]=new StudentRecord[3];
+s[0]=new StudentRecord();
+s[0].setInfo("Amit",12,"FAMT");
+s[1]=new StudentRecord();
+s[1].setInfo("Sumit",22,"goa");
+s[2]=new StudentRecord();
+s[2].setInfo("Rahul",25,"Shivajinagar");
+System.out.println("Name\tAge\tAddress");
+s[0].printData();
+s[1].printData();
+s[2].printData();
+}
+}
