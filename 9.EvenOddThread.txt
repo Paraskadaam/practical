@@ -1,0 +1,62 @@
+Q.9 Create two threads such that one thread will print even number and another will print odd number in an ordered fashion.
+
+
+class NumberPrinter { 
+ private int max; 
+ private int number = 1; 
+ private boolean isOdd = true; 
+ public NumberPrinter(int max) { 
+ this.max = max; 
+ } 
+ public synchronized void printOdd() { 
+ while (number <= max) { 
+ while (!isOdd) { // Wait until it's time to print odd 
+ try { 
+ wait(); 
+ } catch (InterruptedException e) { 
+ e.printStackTrace(); 
+ } 
+ } 
+ System.out.println(Thread.currentThread().getName() + ": " + number);  number++; 
+ isOdd = false; 
+ notify(); 
+ } 
+ } 
+ public synchronized void printEven() { 
+ while (number <= max) { 
+ while (isOdd) { // Wait until it's time to print even 
+ try { 
+ wait(); 
+ } catch (InterruptedException e) { 
+ e.printStackTrace(); 
+ } 
+ } 
+ System.out.println(Thread.currentThread().getName() + ": " + number);  number++; 
+ isOdd = true; 
+ notify(); 
+ } 
+ } 
+} 
+public class EvenOddThreadDemo { 
+ public static void main(String[] args) {
+
+ int max = 10; // Set the maximum number to print 
+ NumberPrinter printer = new NumberPrinter(max); 
+ Thread t1 = new Thread(new Runnable() { 
+ @Override 
+ public void run() { 
+ printer.printOdd(); 
+ } 
+ }, "Odd-Thread"); 
+ Thread t2 = new Thread(new Runnable() { 
+ @Override 
+ public void run() { 
+ printer.printEven(); 
+ } 
+ }, "Even-Thread"); 
+ t1.start(); 
+ t2.start(); 
+ } 
+} 
+
+
