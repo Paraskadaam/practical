@@ -1,0 +1,85 @@
+Q.11 Write a program to create a window with four text fields for the name, street, city and pincode with suitable labels. Also windows contains a button MyInfo. When the user types the name, his street, city and pincode and then clicks the button, the types details must appear in Arial Font with Size 32, Italics.
+
+
+
+
+
+import java.awt.*; 
+import java.awt.event.*; 
+public class MyInfoWindow extends Frame implements ActionListener { 
+
+ // Components 
+ Label nameLabel, streetLabel, cityLabel, pincodeLabel; 
+ TextField nameField, streetField, cityField, pincodeField; 
+ Button myInfoButton; 
+ TextArea displayArea; 
+
+ // Constructor to set up the GUI components 
+ public MyInfoWindow() { 
+ setTitle("User Information"); 
+ setSize(400, 400); 
+ setLayout(new FlowLayout()); 
+
+ // Create and add labels and text fields 
+ nameLabel = new Label("Name:"); 
+ nameField = new TextField(20); 
+ add(nameLabel); 
+ add(nameField); 
+
+ streetLabel = new Label("Street:"); 
+ streetField = new TextField(20); 
+ add(streetLabel); 
+ add(streetField); 
+ cityLabel = new Label("City:"); 
+ cityField = new TextField(20); 
+ add(cityLabel); 
+ add(cityField); 
+
+ pincodeLabel = new Label("Pincode:"); 
+ pincodeField = new TextField(20); 
+ add(pincodeLabel); 
+ add(pincodeField);
+
+ // Create and add the button 
+ myInfoButton = new Button("MyInfo"); 
+ add(myInfoButton); 
+
+ // Create and add the display area 
+ displayArea = new TextArea(5, 30); 
+ displayArea.setEditable(false); 
+ add(displayArea); 
+
+ // Register the button to handle the action event 
+ myInfoButton.addActionListener(this); 
+
+ // Close the window when the user clicks the close button 
+ addWindowListener(new WindowAdapter() { 
+ public void windowClosing(WindowEvent e) { 
+ dispose(); 
+ } 
+ }); 
+
+ // Make the frame visible 
+ setVisible(true); 
+ } 
+
+ // Action event handling 
+ public void actionPerformed(ActionEvent e) { 
+ // Get the text from the text fields 
+ String name = nameField.getText(); 
+ String street = streetField.getText(); 
+ String city = cityField.getText(); 
+ String pincode = pincodeField.getText(); 
+ // Create a string with the user's information 
+ String info = "Name: " + name + "\nStreet: " + street + "\nCity: " + city + "\nPincode:  " + pincode; 
+
+ // Set the font and display the information 
+ displayArea.setFont(new Font("Arial", Font.ITALIC, 32)); 
+ displayArea.setText(info); 
+ } 
+
+ // Main method to run the application 
+ public static void main(String[] args) { 
+ new MyInfoWindow(); 
+ } 
+}
