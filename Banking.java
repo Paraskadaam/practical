@@ -101,40 +101,7 @@ Address:agsf
 4:Display Balance
 5:Exit
 
-Choice:1
-Enter deposit number
-2000000
-Balance:2000000.01:deposit
-2:withdraw
-3:Calculate interest
-4:Display Balance
-5:Exit
 
-Choice:2
-Enter Withdraw number
-4555
-Balance:1995445.01:deposit
-2:withdraw
-3:Calculate interest
-4:Display Balance
-5:Exit
-
-Choice:3
-Balance:2045331.1251:deposit
-2:withdraw
-3:Calculate interest
-4:Display Balance
-5:Exit
-
-Choice:4
-Balance:2045331.1251:deposit
-2:withdraw
-3:Calculate interest
-4:Display Balance
-5:Exit
-
-Choice:5
-Exit the Application
 
 
 
